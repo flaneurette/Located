@@ -16,7 +16,7 @@ Pronounced: *Locate Dee* or: `/loʊˈkeɪt ˈdiː/`
 * Supports common config extensions: `.conf`, `.ini`, `.cf`, `.local`, `.cnf`, `.yaml`, `.yml`, `.json`, `.env`, `.rules`, `.list`, `.service`, `.socket`, `.timer`
 * Filter by extension: `located -q .ext` (e.g., `located -q .git`)
 * Full list mode: `located -all` 
-* Opens selected config in `$EDITOR` (defaults to `nano`, you can change it to anything you like).
+* Opens selected config in `$EDITOR` (defaults to `nano`, you can change it to anything you like). 
  
 ### Installation
 
