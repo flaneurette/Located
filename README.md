@@ -4,7 +4,9 @@ Linux Located: a bash service that lets you find configs quickly.
 
 Pronounced: *Locate Dee* or: `/loʊˈkeɪt ˈdiː/`
 
-`located` is a simple, color-coded bash script to quickly find and edit configuration files on Linux systems. It saves time hunting through `/etc` and other system directories, supporting multiple formats, priority configs, multi-column display, and extension filtering.
+`located` is a simple linux program to quickly find and edit configuration files on Linux systems. It saves time hunting through `/etc` and other system directories, supporting multiple formats, priority configs, multi-column display, and extension filtering.
+
+<img src="https://raw.githubusercontent.com/flaneurette/Linux-Located/refs/heads/main/src/locateD.png">
 
 ### Features
 
