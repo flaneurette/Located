@@ -1,4 +1,4 @@
-# Linux Locate - Fast Config File Finder & Editor
+# Linux Locate - fast config file finder & editor
 
 Linux Locate: a bash service that lets you find configs quickly.
 
