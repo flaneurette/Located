@@ -6,7 +6,7 @@ Pronounced: *Locate Dee* or: `/loʊˈkeɪt ˈdiː/`
 
 `located` is a simple linux program to quickly find and edit configuration files on Linux systems. It saves time hunting through `/etc` and other system directories, supporting multiple formats, priority configs, multi-column display, and extension filtering.
 
-<img src="https://raw.githubusercontent.com/flaneurette/Linux-Located/refs/heads/main/src/locate-D.png">
+<img src="https://raw.githubusercontent.com/flaneurette/Linux-Located/refs/heads/main/src/Locate-Dee.png">
 
 ### Features
 
