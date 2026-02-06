@@ -53,7 +53,7 @@ located -q .ext    # Filter by extension, e.g., .yaml, .json, .git
 ```bash
 sudo nano /usr/local/bin/located
 ```
- 
+
 Paste the attached locate.sh script. 
 
 2. Make it executable:
