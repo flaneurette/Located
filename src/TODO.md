@@ -40,9 +40,14 @@ Example of beautiful formatting:
 
 ```
 located php -v
-  CLI:     PHP 8.1.2
-  FPM:     PHP 8.1.2  
-  Running: PHP 8.1.2 (via php-fpm8.1)
+  CLI:     			PHP 8.1.2
+  FPM:     			PHP 8.1.2  
+  Running: 			PHP 8.1.2 (via php-fpm8.1)
+  Config File:      /etc/php/8.1/fpm/php.ini
+  Extensions:       mysqli, pdo_mysql, gd, curl, mbstring...
+  Memory Limit:     128M
+  Upload Max:       2M
+  Post Max:         8M
   
 located apache -v
   Installed: Apache/2.4.52
