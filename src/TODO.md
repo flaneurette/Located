@@ -8,6 +8,7 @@ located -service | -services 	# systemd service files
 located -cron    | -crontabs 	# crontabs, /etc/cron.*
 located -cert    | -certs  		# SSL/TLS certificates (.pem, .crt, .key)
 located -backup  | -backups		# .bak, .old, backup dirs
+located -journal -n 100 		# quick journalctl wrapper
 ```
 
 Each mode could have its own priority list and search paths. Like: *located -logs* could prioritize:
