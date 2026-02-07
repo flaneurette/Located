@@ -22,6 +22,19 @@ Each mode could have its own priority list and search paths. Like: *located -log
 
 # Other ideas
 
+Versioning. (often it's `-v`, then `--version`, another has `-changelog` or `-version` etc, etc, rather inconsistent).
+
+> To make things worse: `PHP -v` gives `CLI` version, instead of `running PHP`.
+
+We can simply map them all to an understandable format:
+
+```
+located php -v
+located apache -v
+located dovecot -v
+located postfix -v
+```
+
 Firewall management
 
 ```
