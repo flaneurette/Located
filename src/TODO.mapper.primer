@@ -2,7 +2,7 @@
 
 ## Security & Crypto
 
-```bash
+```
 openssl version                    # OpenSSL
 gpg --version                      # GnuPG
 ssh -V                             # OpenSSH (capital V)
@@ -10,7 +10,7 @@ ssh -V                             # OpenSSH (capital V)
 
 ## Web Servers
 
-```bash
+```
 apache2 -v                         # Apache (Ubuntu/Debian)
 httpd -v                           # Apache (RHEL/CentOS)
 nginx -v                           # Nginx
@@ -19,7 +19,7 @@ lighttpd -v                        # Lighttpd
 
 ## Databases
 
-```bash
+```
 mysql --version                    # MySQL
 mariadb --version                  # MariaDB
 mysqld --version                   # MySQL daemon
@@ -32,7 +32,7 @@ sqlite3 --version                  # SQLite
 
 ## Mail Servers
 
-```bash
+```
 postconf mail_version              # Postfix
 dovecot --version                  # Dovecot
 exim --version                     # Exim
@@ -41,7 +41,7 @@ sendmail -d0.1                     # Sendmail
 
 ## Programming Languages
 
-```bash
+```
 python --version                   # Python 2
 python3 --version                  # Python 3
 ruby --version                     # Ruby
@@ -61,7 +61,7 @@ make --version                     # Make
 
 ## Version Control
 
-```bash
+```
 git --version                      # Git
 svn --version                      # Subversion
 hg --version                       # Mercurial
@@ -69,7 +69,7 @@ hg --version                       # Mercurial
 
 ## Container & Virtualization
 
-```bash
+```
 docker --version                   # Docker
 docker-compose --version           # Docker Compose
 podman --version                   # Podman
@@ -80,7 +80,7 @@ qemu-system-x86_64 --version       # QEMU
 
 ## Web/Network Tools
 
-```bash
+```
 curl --version                     # cURL
 wget --version                     # Wget
 rsync --version                    # Rsync
@@ -93,7 +93,7 @@ wireshark --version                # Wireshark
 
 ## System Tools
 
-```bash
+```
 systemctl --version                # systemd
 cron -V                            # Cron (some versions)
 ansible --version                  # Ansible
@@ -104,7 +104,7 @@ helm version                       # Helm
 
 ## Compression Tools
 
-```bash
+```
 tar --version                      # Tar
 gzip --version                     # Gzip
 bzip2 --version                    # Bzip2
@@ -116,7 +116,7 @@ unzip -v                           # Unzip
 
 ## Text Editors
 
-```bash
+```
 vim --version                      # Vim
 emacs --version                    # Emacs
 nano --version                     # Nano
@@ -125,7 +125,7 @@ joe -version                       # Joe
 
 ## Shell & Utilities
 
-```bash
+```
 bash --version                     # Bash
 zsh --version                      # Zsh
 fish --version                     # Fish
@@ -138,7 +138,7 @@ awk --version                      # Awk
 
 ## Monitoring & Logging
 
-```bash
+```
 top -v                             # Top
 htop --version                     # Htop
 iotop --version                    # IOtop
@@ -151,7 +151,7 @@ logrotate --version                # Logrotate
 
 ## Firewall & Security
 
-```bash
+```
 iptables --version                 # iptables
 nft --version                      # nftables
 ufw version                        # UFW (no dashes!)
@@ -160,7 +160,7 @@ firewalld --version                # Firewalld
 
 ## Package Managers
 
-```bash
+```
 apt --version                      # APT (Debian/Ubuntu)
 apt-get --version                  # APT-GET
 dpkg --version                     # DPKG
@@ -178,7 +178,7 @@ cargo --version                    # Rust Cargo
 
 ## Backup Tools
 
-```bash
+```
 rsnapshot -V                       # rsnapshot (capital V)
 duplicity --version                # Duplicity
 borgbackup --version               # Borg
@@ -187,7 +187,7 @@ restic version                     # Restic
 
 ## Tricky Ones (Non-Standard)
 
-```bash
+```
 # Java (output goes to stderr)
 java -version 2>&1 | head -1
 
@@ -206,7 +206,7 @@ uname -a                           # Full system info
 
 # Helper function.
 
-```bash
+```
 get_version() {
     local package=$1
     local version_output
@@ -464,7 +464,7 @@ get_version_number() {
 
 ## Usage in `located`
 
-```bash
+```
 #!/bin/bash
 
 # Include the get_version function here
@@ -503,7 +503,7 @@ esac
 
 ## Batch Version Checker
 
-```bash
+```
 # Check versions of all common packages
 check_all_versions() {
     echo -e "${COLOR}Checking versions of installed packages:${RESET}\n"
@@ -537,7 +537,7 @@ check_all_versions() {
 
 ## Testing the Function
 
-```bash
+```
 # Test script to verify all mappings work
 test_version_mappings() {
     local packages=(
