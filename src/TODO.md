@@ -29,8 +29,8 @@ located -sites-enabled   # just the active ones
 ```
 
 ```
-located -size +100M      # files larger than 100M
-located -size -10M       # files smaller than 10M
+located -size >100M      # files larger than 100M
+located -size <10M       # files smaller than 10M
 located -size 50M-200M   # files between 50M and 200M
 ```
 
