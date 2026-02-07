@@ -1,0 +1,626 @@
+# Mapper
+
+## Security & Crypto
+
+```bash
+openssl version                    # OpenSSL
+gpg --version                      # GnuPG
+ssh -V                             # OpenSSH (capital V)
+```
+
+## Web Servers
+
+```bash
+apache2 -v                         # Apache (Ubuntu/Debian)
+httpd -v                           # Apache (RHEL/CentOS)
+nginx -v                           # Nginx
+lighttpd -v                        # Lighttpd
+```
+
+## Databases
+
+```bash
+mysql --version                    # MySQL
+mariadb --version                  # MariaDB
+mysqld --version                   # MySQL daemon
+psql --version                     # PostgreSQL client
+postgres --version                 # PostgreSQL server
+mongod --version                   # MongoDB
+redis-server --version             # Redis
+sqlite3 --version                  # SQLite
+```
+
+## Mail Servers
+
+```bash
+postconf mail_version              # Postfix
+dovecot --version                  # Dovecot
+exim --version                     # Exim
+sendmail -d0.1                     # Sendmail
+```
+
+## Programming Languages
+
+```bash
+python --version                   # Python 2
+python3 --version                  # Python 3
+ruby --version                     # Ruby
+perl --version                     # Perl
+php --version                      # PHP (CLI)
+php-fpm8.1 -v                      # PHP-FPM
+node --version                     # Node.js
+npm --version                      # NPM
+java -version                      # Java
+javac -version                     # Java compiler
+go version                         # Go
+rustc --version                    # Rust
+gcc --version                      # GCC
+g++ --version                      # G++
+make --version                     # Make
+```
+
+## Version Control
+
+```bash
+git --version                      # Git
+svn --version                      # Subversion
+hg --version                       # Mercurial
+```
+
+## Container & Virtualization
+
+```bash
+docker --version                   # Docker
+docker-compose --version           # Docker Compose
+podman --version                   # Podman
+lxc-ls --version                   # LXC
+vboxmanage --version               # VirtualBox
+qemu-system-x86_64 --version       # QEMU
+```
+
+## Web/Network Tools
+
+```bash
+curl --version                     # cURL
+wget --version                     # Wget
+rsync --version                    # Rsync
+scp -V                             # SCP (capital V)
+sftp -V                            # SFTP (capital V)
+nc -h 2>&1 | head -1              # Netcat (tricky one)
+nmap --version                     # Nmap
+wireshark --version                # Wireshark
+```
+
+## System Tools
+
+```bash
+systemctl --version                # systemd
+cron -V                            # Cron (some versions)
+ansible --version                  # Ansible
+terraform --version                # Terraform
+kubectl version --client           # Kubernetes client
+helm version                       # Helm
+```
+
+## Compression Tools
+
+```bash
+tar --version                      # Tar
+gzip --version                     # Gzip
+bzip2 --version                    # Bzip2
+xz --version                       # XZ
+zip -v                             # Zip
+unzip -v                           # Unzip
+7z                                 # 7-Zip (shows version in output)
+```
+
+## Text Editors
+
+```bash
+vim --version                      # Vim
+emacs --version                    # Emacs
+nano --version                     # Nano
+joe -version                       # Joe
+```
+
+## Shell & Utilities
+
+```bash
+bash --version                     # Bash
+zsh --version                      # Zsh
+fish --version                     # Fish
+tmux -V                            # Tmux (capital V)
+screen -v                          # Screen
+grep --version                     # Grep
+sed --version                      # Sed
+awk --version                      # Awk
+```
+
+## Monitoring & Logging
+
+```bash
+top -v                             # Top
+htop --version                     # Htop
+iotop --version                    # IOtop
+netdata -v                         # Netdata
+prometheus --version               # Prometheus
+grafana-server -v                  # Grafana
+fail2ban-server --version          # Fail2ban
+logrotate --version                # Logrotate
+```
+
+## Firewall & Security
+
+```bash
+iptables --version                 # iptables
+nft --version                      # nftables
+ufw version                        # UFW (no dashes!)
+firewalld --version                # Firewalld
+```
+
+## Package Managers
+
+```bash
+apt --version                      # APT (Debian/Ubuntu)
+apt-get --version                  # APT-GET
+dpkg --version                     # DPKG
+yum --version                      # YUM (RHEL/CentOS)
+dnf --version                      # DNF (Fedora)
+pacman --version                   # Pacman (Arch)
+snap --version                     # Snap
+flatpak --version                  # Flatpak
+pip --version                      # Python pip
+pip3 --version                     # Python 3 pip
+composer --version                 # PHP Composer
+gem --version                      # Ruby Gems
+cargo --version                    # Rust Cargo
+```
+
+## Backup Tools
+
+```bash
+rsnapshot -V                       # rsnapshot (capital V)
+duplicity --version                # Duplicity
+borgbackup --version               # Borg
+restic version                     # Restic
+```
+
+## Tricky Ones (Non-Standard)
+
+```bash
+# Java (output goes to stderr)
+java -version 2>&1 | head -1
+
+# Netcat (no standard version flag)
+nc -h 2>&1 | head -1
+
+# Some packages need specific approaches
+postconf mail_version              # Postfix doesn't use -v or --version
+
+# Kernel version
+uname -r                           # Kernel version
+uname -a                           # Full system info
+```
+
+## Implementation Helper Function
+
+```bash
+get_version() {
+    local package=$1
+    
+    case "$package" in
+        # Special cases
+        java)
+            java -version 2>&1 | head -1
+            ;;
+        postfix)
+            postconf mail_version 2>/dev/null | cut -d= -f2
+            ;;
+        kernel)
+            uname -r
+            ;;
+        # Standard --version
+        python|python3|ruby|perl|node|npm|go|git|docker|nginx|apache2|mysql|php)
+            $package --version 2>/dev/null | head -1
+            ;;
+        # Standard -v
+        apache2|httpd|nginx)
+            $package -v 2>/dev/null | head -1
+            ;;
+        # Standard -V (capital)
+        ssh|scp|tmux)
+            $package -V 2>/dev/null | head -1
+            ;;
+        # No flag, just command
+        openssl)
+            openssl version 2>/dev/null
+            ;;
+        *)
+            # Try common patterns
+            if command -v $package >/dev/null 2>&1; then
+                $package --version 2>/dev/null | head -1 || \
+                $package -v 2>/dev/null | head -1 || \
+                $package -V 2>/dev/null | head -1 || \
+                echo "Unknown version format"
+            else
+                echo "Not installed"
+            fi
+            ;;
+    esac
+}
+```
+
+## Quick Reference Table
+
+| Package | Command | Notes |
+|---------|---------|-------|
+| Apache | `apache2 -v` or `httpd -v` | Depends on distro |
+| Nginx | `nginx -v` | Output to stderr |
+| PHP | `php --version` | CLI version |
+| MySQL | `mysql --version` | Client version |
+| PostgreSQL | `psql --version` | Client version |
+| Postfix | `postconf mail_version` | Special case |
+| Dovecot | `dovecot --version` | Standard |
+| OpenSSL | `openssl version` | No dashes |
+| SSH | `ssh -V` | Capital V |
+| Python | `python3 --version` | Use python3 |
+| Node.js | `node --version` | Standard |
+| Docker | `docker --version` | Standard |
+| Git | `git --version` | Standard |
+| Java | `java -version` | Output to stderr |
+
+
+
+---
+
+# Helper function.
+
+```bash
+get_version() {
+    local package=$1
+    local version_output
+    
+    case "$package" in
+        # ==========================================
+        # SPECIAL CASES - Non-standard version commands
+        # ==========================================
+        
+        # Postfix - uses postconf
+        postfix)
+            postconf mail_version 2>/dev/null | cut -d= -f2 | xargs
+            ;;
+        
+        # Java - outputs to stderr
+        java)
+            java -version 2>&1 | head -1
+            ;;
+        
+        # Kernel - uses uname
+        kernel|linux)
+            uname -r
+            ;;
+        
+        # OpenSSL - no dashes
+        openssl)
+            openssl version 2>/dev/null
+            ;;
+        
+        # UFW - no dashes
+        ufw)
+            ufw version 2>/dev/null
+            ;;
+        
+        # Netcat - no standard version flag
+        nc|netcat)
+            nc -h 2>&1 | head -1
+            ;;
+        
+        # Sendmail - uses -d0.1
+        sendmail)
+            sendmail -d0.1 2>&1 | head -1
+            ;;
+        
+        # 7-Zip - just command name shows version
+        7z|7zip)
+            7z 2>&1 | head -2 | tail -1
+            ;;
+        
+        # Restic - uses 'version' subcommand
+        restic)
+            restic version 2>/dev/null
+            ;;
+        
+        # Go - uses 'version' subcommand
+        go|golang)
+            go version 2>/dev/null
+            ;;
+        
+        # Kubectl - needs --client flag
+        kubectl)
+            kubectl version --client 2>/dev/null | head -1
+            ;;
+        
+        # Helm - uses 'version' subcommand
+        helm)
+            helm version 2>/dev/null
+            ;;
+        
+        # ==========================================
+        # CAPITAL -V FLAG
+        # ==========================================
+        
+        ssh|scp|sftp|tmux|rsnapshot|cron)
+            $package -V 2>/dev/null | head -1
+            ;;
+        
+        # ==========================================
+        # LOWERCASE -v FLAG
+        # ==========================================
+        
+        apache2|httpd|nginx|lighttpd|tar|zip|top|screen)
+            $package -v 2>/dev/null | head -1
+            ;;
+        
+        # ==========================================
+        # --version FLAG (most common)
+        # ==========================================
+        
+        # Web Servers
+        apache|apache2)
+            apache2 --version 2>/dev/null || httpd --version 2>/dev/null
+            ;;
+        
+        # Databases
+        mysql|mariadb|mysqld|psql|postgres|mongod|sqlite3)
+            $package --version 2>/dev/null | head -1
+            ;;
+        
+        redis-server|redis)
+            redis-server --version 2>/dev/null | head -1
+            ;;
+        
+        # Mail Servers
+        dovecot|exim)
+            $package --version 2>/dev/null | head -1
+            ;;
+        
+        # Programming Languages
+        python|python2|python3|ruby|perl|php|rustc|gcc|g++|make|javac)
+            $package --version 2>/dev/null | head -1
+            ;;
+        
+        # PHP-FPM (version specific)
+        php-fpm*)
+            $package --version 2>/dev/null | head -1
+            ;;
+        
+        # Node.js ecosystem
+        node|npm|yarn)
+            $package --version 2>/dev/null
+            ;;
+        
+        # Version Control
+        git|svn|hg)
+            $package --version 2>/dev/null | head -1
+            ;;
+        
+        # Container & Virtualization
+        docker|podman|vboxmanage)
+            $package --version 2>/dev/null
+            ;;
+        
+        docker-compose)
+            docker-compose --version 2>/dev/null
+            ;;
+        
+        lxc-ls|qemu-system-x86_64)
+            $package --version 2>/dev/null | head -1
+            ;;
+        
+        # Network Tools
+        curl|wget|rsync|nmap|wireshark)
+            $package --version 2>/dev/null | head -1
+            ;;
+        
+        # System Tools
+        systemctl|ansible|terraform)
+            $package --version 2>/dev/null | head -1
+            ;;
+        
+        # Compression Tools
+        gzip|bzip2|xz|unzip)
+            $package --version 2>/dev/null | head -1
+            ;;
+        
+        # Text Editors
+        vim|emacs|nano|joe)
+            $package --version 2>/dev/null | head -1
+            ;;
+        
+        # Shell & Utilities
+        bash|zsh|fish|grep|sed|awk)
+            $package --version 2>/dev/null | head -1
+            ;;
+        
+        # Monitoring & Logging
+        htop|iotop|netdata|prometheus|grafana-server|logrotate)
+            $package --version 2>/dev/null | head -1
+            ;;
+        
+        fail2ban-server|fail2ban)
+            fail2ban-server --version 2>/dev/null | head -1
+            ;;
+        
+        # Firewall & Security
+        iptables|nft|firewalld)
+            $package --version 2>/dev/null | head -1
+            ;;
+        
+        # Package Managers
+        apt|apt-get|dpkg|yum|dnf|pacman|snap|flatpak)
+            $package --version 2>/dev/null | head -1
+            ;;
+        
+        pip|pip3|composer|gem|cargo)
+            $package --version 2>/dev/null | head -1
+            ;;
+        
+        # Backup Tools
+        duplicity|borgbackup|borg)
+            $package --version 2>/dev/null | head -1
+            ;;
+        
+        # Security
+        gpg)
+            gpg --version 2>/dev/null | head -1
+            ;;
+        
+        # ==========================================
+        # FALLBACK - Try common patterns
+        # ==========================================
+        
+        *)
+            if command -v "$package" >/dev/null 2>&1; then
+                # Try --version first (most common)
+                version_output=$($package --version 2>/dev/null | head -1)
+                if [[ -n "$version_output" ]]; then
+                    echo "$version_output"
+                    return 0
+                fi
+                
+                # Try -v
+                version_output=$($package -v 2>/dev/null | head -1)
+                if [[ -n "$version_output" ]]; then
+                    echo "$version_output"
+                    return 0
+                fi
+                
+                # Try -V (capital)
+                version_output=$($package -V 2>/dev/null | head -1)
+                if [[ -n "$version_output" ]]; then
+                    echo "$version_output"
+                    return 0
+                fi
+                
+                # Try 'version' subcommand
+                version_output=$($package version 2>/dev/null | head -1)
+                if [[ -n "$version_output" ]]; then
+                    echo "$version_output"
+                    return 0
+                fi
+                
+                echo "Unknown version format for $package"
+            else
+                echo "Not installed"
+            fi
+            ;;
+    esac
+}
+
+# Alternative: Get clean version number only (no package name)
+get_version_number() {
+    local package=$1
+    local full_version=$(get_version "$package")
+    
+    # Extract just the version number using various patterns
+    echo "$full_version" | grep -oP '\d+\.\d+(\.\d+)*(-[\w\.]+)?' | head -1
+}
+
+# Usage examples:
+# get_version "php"           # Returns: PHP 8.1.2-1ubuntu2.14 (cli) (built: Aug 18 2023 11:41:11) (NTS)
+# get_version_number "php"    # Returns: 8.1.2
+```
+
+## Usage in `located`
+
+```bash
+#!/bin/bash
+
+# Include the get_version function here
+# [paste get_version function above]
+
+# Main command handler
+case "$1" in
+    -v|--version)
+        # Show located's own version
+        echo "located version 1.0"
+        ;;
+    
+    *)
+        if [[ "$2" == "-v" ]] || [[ "$2" == "--version" ]]; then
+            # User wants version of a package
+            PACKAGE="$1"
+            
+            echo -e "${COLOR}Version Information for: ${PACKAGE}${RESET}\n"
+            
+            VERSION=$(get_version "$PACKAGE")
+            
+            if [[ "$VERSION" == "Not installed" ]]; then
+                echo -e "  ${RED}$PACKAGE is not installed${RESET}"
+            elif [[ "$VERSION" == "Unknown version format"* ]]; then
+                echo -e "  ${YELLOW}$VERSION${RESET}"
+            else
+                echo -e "  ${GREEN}$VERSION${RESET}"
+            fi
+        else
+            # Regular located functionality (config file selection)
+            # ... your existing code ...
+        fi
+        ;;
+esac
+```
+
+## Batch Version Checker
+
+```bash
+# Check versions of all common packages
+check_all_versions() {
+    echo -e "${COLOR}Checking versions of installed packages:${RESET}\n"
+    
+    PACKAGES=(
+        # Web servers
+        "apache2" "nginx" "lighttpd"
+        # Databases
+        "mysql" "mariadb" "postgres" "redis-server" "mongod"
+        # Mail
+        "postfix" "dovecot" "exim"
+        # Languages
+        "php" "python3" "ruby" "node" "java" "go"
+        # Tools
+        "git" "docker" "ansible" "terraform"
+        # System
+        "openssl" "ssh" "kernel"
+    )
+    
+    for pkg in "${PACKAGES[@]}"; do
+        if command -v "$pkg" >/dev/null 2>&1 || [[ "$pkg" == "kernel" ]]; then
+            VERSION=$(get_version "$pkg")
+            printf "  %-20s ${GREEN}%s${RESET}\n" "$pkg:" "$VERSION"
+        fi
+    done
+}
+
+# Usage: located -v all
+# Or: located --check-versions
+```
+
+## Testing the Function
+
+```bash
+# Test script to verify all mappings work
+test_version_mappings() {
+    local packages=(
+        "apache2" "nginx" "php" "mysql" "postfix" "dovecot"
+        "python3" "node" "git" "docker" "openssl" "ssh"
+        "kernel" "java" "go" "redis-server" "postgresql"
+    )
+    
+    echo "Testing version detection for common packages:"
+    echo "================================================"
+    
+    for pkg in "${packages[@]}"; do
+        printf "%-20s : " "$pkg"
+        get_version "$pkg"
+    done
+}
+```
