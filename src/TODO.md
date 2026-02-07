@@ -33,6 +33,7 @@ located php -v
 located apache -v
 located dovecot -v
 located postfix -v
+located all -v           # show versions of all installed services!
 ```
 
 Firewall management
