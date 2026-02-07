@@ -495,7 +495,7 @@ case "$1" in
             fi
         else
             # Regular located functionality (config file selection)
-            # ... your existing code ...
+            # ... existing code ...
         fi
         ;;
 esac
