@@ -1,6 +1,16 @@
 # Todo list.
 
 ```
+modes/
+  logs.sh
+  certs.sh
+  services.sh
+  versions.sh
+  etc...
+```
+
+
+```
 lcd -archive | -archives  	# .tar, .gz, .zip, .bz2, .xz, .7z
 lcd -logs    | -log 		# /var/log/* and other log locations
 lcd -error   | -errors 	# /var/log/error.log and all other error logs. (also scan all vhosts!)
@@ -87,6 +97,14 @@ Vhosts management (very difficult to memorize all sites/configs/enabled/availabl
 ```
 lcd -vhosts          # Apache/Nginx virtual host configs
 lcd -sites           # all sites configs
+```
+
+Site management:
+
+```
+lcd example.com
+lcd example.com -logs
+lcd example.com -cert
 ```
 
 Search on filesize.
