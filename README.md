@@ -1,8 +1,8 @@
-# Linux Located - fast config file finder & editor
+# Linux LCD - fast config file finder & editor
 
-Linux Located: linux program that lets you find and edit configs quickly.
+Located: linux program that lets you find and edit configs quickly.
 
-Pronounced: *Locate Dee* or: `/loʊˈkeɪt ˈdiː/` 
+Pronounced: *Locate D*, *LCD* or: `/loʊˈkeɪt ˈdiː/` 
 
 `located` is a simple linux program to quickly find and edit configuration files on Linux systems. It saves time hunting through `/etc` and other system directories, supporting multiple formats, priority configs, multi-column display, and extension filtering.
 
@@ -16,13 +16,16 @@ sudo apt install located
 
 Usage:
 
+`located service -param`
+`lcd service -param`
+
 ```bash
-located            # Show prioritized config files
-located -all       # Show all config files found in /etc
-located -q .ext    # Filter by extension, e.g., .yaml, .json, .git
+lcd            # Show prioritized config files
+lcd -all       # Show all config files found in /etc
+lcd -q .ext    # Filter by extension, e.g., .yaml, .json, .git
 ```
 
-<img src="https://raw.githubusercontent.com/flaneurette/Linux-Located/refs/heads/main/src/Locate-Dee.png">
+<img src="https://raw.githubusercontent.com/flaneurette/Linux-Located/refs/heads/main/src/Terminal.png">
 
 ### Features
  
@@ -30,8 +33,8 @@ located -q .ext    # Filter by extension, e.g., .yaml, .json, .git
 * Multi-column display for easy viewing
 * Priority list for frequently used configs (Postfix, Apache, Fail2Ban, etc.)
 * Supports common config extensions: `.conf`, `.ini`, `.cf`, `.local`, `.cnf`, `.yaml`, `.yml`, `.json`, `.env`, `.rules`, `.list`, `.service`, `.socket`, `.timer`
-* Filter by extension: `located -q .ext` (e.g., `located -q .git`)
-* Full list mode: `located -all`
+* Filter by extension: `lcd -q .ext` (e.g., `lcd -q .git`)
+* Full list mode: `lcd -all`
 * Opens selected config in `$EDITOR` (defaults to `nano`, you can change it to anything you like).
 
 ### Manual Installation
@@ -39,13 +42,13 @@ located -q .ext    # Filter by extension, e.g., .yaml, .json, .git
 Wget the raw package:
 
 ```
-wget https://github.com/flaneurette/Linux-Located/raw/refs/heads/main/located-1.0.deb
+wget https://github.com/flaneurette/Linux-Located/raw/refs/heads/main/located_1.1-2_all.deb
 ```
 
 Install it:
 
 ```
-sudo dpkg -i located-1.0.deb
+sudo dpkg -i located_1.1-2_all.deb
 ```
 
 Manpage: 
@@ -56,9 +59,9 @@ man located
 Usage:
 
 ```bash
-located            # Show prioritized config files
-located -all       # Show all config files found in /etc
-located -q .ext    # Filter by extension, e.g., .yaml, .json, .git
+lcd            # Show prioritized config files
+lcd -all       # Show all config files found in /etc
+lcd -q .ext    # Filter by extension, e.g., .yaml, .json, .git
 ```
  
 ### Manual installation with config options
@@ -67,7 +70,7 @@ located -q .ext    # Filter by extension, e.g., .yaml, .json, .git
 1. Clone this repository:
 
 ```bash
-sudo nano /usr/local/bin/located
+sudo nano /usr/local/bin/lcd
 ```
 
 Paste the attached locate.sh script. 
@@ -75,21 +78,21 @@ Paste the attached locate.sh script.
 2. Make it executable:
 
 ```bash
-chmod +x /usr/local/bin/located
+chmod +x /usr/local/bin/lcd
 ```
 
 3. Run it:
 
 ```bash
-located
+lcd
 ```
 
 ### Usage
 
 ```bash
-located            # Show prioritized config files
-located -all       # Show all config files found in /etc
-located -q .ext    # Filter by extension, e.g., .yaml, .json, .git
+lcd            # Show prioritized config files
+lcd -all       # Show all config files found in /etc
+lcd -q .ext    # Filter by extension, e.g., .yaml, .json, .git
 ```
 
 1. Select a number from the list to open the file in your editor.
