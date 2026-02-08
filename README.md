@@ -1,6 +1,6 @@
-# Located (LCD) - fast config file finder & editor
+# LCD - fast config file finder & editor
 
-Pronounced: *Locate D*, *LCD* or: `/loʊˈkeɪt ˈdiː/` 
+LCD: List > Choose > Do.
 
 It is a simple GNU-Linux program to quickly find and edit configuration files on Linux systems. It saves time hunting through `/etc` and other system directories, supporting multiple formats, priority configs, multi-column display, and extension filtering.
 
