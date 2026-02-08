@@ -31,11 +31,11 @@ lcd -q .ext    # Filter by extension, e.g., .yaml, .json, .git
 ### Depends
 
 ```
-	Depends: findutils,
-		util-linux
-	Suggests: systemd,
-		iptables
-	Recommends: nano
+Depends: findutils,
+	util-linux
+Suggests: systemd,
+	iptables
+Recommends: nano
 ```
 	
 ### Features
