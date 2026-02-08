@@ -14,11 +14,9 @@ sudo apt install located
 
 Usage:
 
-`lcd service -param`
+`lcd service -param` Alias: `located service -param`
 
-Alias:
-
-`located service -param`
+Examples:
 
 ```bash
 lcd            # Show prioritized config files
