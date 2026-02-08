@@ -1,0 +1,18 @@
+# Depends, later on.
+
+`findutils`
+
+`journalctl > from systemd`
+
+`systemctl`
+
+`iptables / nft`
+
+Those should be soft-checked (command -v) or optional.
+
+```
+debian/control
+	Depends: findutils,
+		util-linux
+	Suggests: systemd
+```
