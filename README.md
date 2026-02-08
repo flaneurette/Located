@@ -1,4 +1,4 @@
-# Linux LCD - fast config file finder & editor
+# Located (LCD) - fast config file finder & editor
 
 Is a linux program that lets you find and edit configs quickly.
 
@@ -16,9 +16,8 @@ sudo apt install located
 
 Usage:
 
-`located service -param`
-
 `lcd service -param`
+`located service -param`
 
 ```bash
 lcd            # Show prioritized config files
@@ -38,7 +37,7 @@ lcd -q .ext    # Filter by extension, e.g., .yaml, .json, .git
 * Full list mode: `lcd -all`
 * Opens selected config in `$EDITOR` (defaults to `nano`, you can change it to anything you like).
 
-### Manual Installation
+### .deb installation
 
 Wget the raw package:
 
@@ -52,11 +51,6 @@ Install it:
 sudo dpkg -i located_1.1-2_all.deb
 ```
 
-Manpage: 
-```
-man located
-```
-
 Usage:
 
 ```bash
@@ -65,8 +59,7 @@ lcd -all       # Show all config files found in /etc
 lcd -q .ext    # Filter by extension, e.g., .yaml, .json, .git
 ```
  
-### Manual installation with config options
-
+### Manual installation (with config options)
 
 1. Clone this repository:
 
@@ -74,7 +67,7 @@ lcd -q .ext    # Filter by extension, e.g., .yaml, .json, .git
 sudo nano /usr/local/bin/lcd
 ```
 
-Paste the attached locate.sh script. 
+Paste the attached lcd.sh script. 
 
 2. Make it executable:
 
