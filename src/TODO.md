@@ -1,17 +1,17 @@
 # Todo list.
 
 ```
-located -archive | -archives  	# .tar, .gz, .zip, .bz2, .xz, .7z
-located -logs    | -log 		# /var/log/* and other log locations
-located -error   | -errors 		# /var/log/error.log and all other error logs. (also scan all vhosts!)
-located -service | -services 	# systemd service files
-located -cron    | -crontabs 	# crontabs, /etc/cron.*
-located -cert    | -certs  		# SSL/TLS certificates (.pem, .crt, .key)
-located -backup  | -backups		# .bak, .old, backup dirs
-located -journal -n 100 		# quick journalctl wrapper
+lcd -archive | -archives  	# .tar, .gz, .zip, .bz2, .xz, .7z
+lcd -logs    | -log 		# /var/log/* and other log locations
+lcd -error   | -errors 	# /var/log/error.log and all other error logs. (also scan all vhosts!)
+lcd -service | -services 	# systemd service files
+lcd -cron    | -crontabs 	# crontabs, /etc/cron.*
+lcd -cert    | -certs  	# SSL/TLS certificates (.pem, .crt, .key)
+lcd -backup  | -backups	# .bak, .old, backup dirs
+lcd -journal -n 100 		# quick journalctl wrapper
 ```
 
-Each mode could have its own priority list and search paths. Like: *located -logs* could prioritize:
+Each mode could have its own priority list and search paths. Like: *lcd -logs* could prioritize:
 
 ```
 /var/log/syslog
@@ -26,9 +26,9 @@ Each mode could have its own priority list and search paths. Like: *located -log
 Easy service management. No more `systemctl` / `service` which all have a different parameter order (confusing).
 
 ```
-located apache -start             # also accepts apache2
-located apache -stop    | -quit
-located apache -restart | -reboot
+lcd apache -start             # also accepts apache2
+lcd apache -stop    | -quit
+lcd apache -restart | -reboot
 ```
 
 Versioning. 
@@ -40,18 +40,18 @@ Often it's `service -v`, then `--version`, another has `-changelog` or `-version
 We can simply map them all to an understandable format:
 
 ```
-located linux -v 		 # shows uname -a
-located php -v			 # shows real webserver PHP
-located apache -v
-located dovecot -v
-located postfix -v
-located all -v           # show versions of all installed services!
+lcd linux -v 		 # shows uname -a
+lcd php -v			 # shows real webserver PHP
+lcd apache -v
+lcd dovecot -v
+lcd postfix -v
+lcd all -v          # show versions of all installed services!
 ```
 
 Example of beautiful formatting:
 
 ```
-located php -v
+lcd php -v
   CLI:     			PHP 8.1.2
   FPM:     			PHP 8.1.2  
   Running: 			PHP 8.1.2 (via php-fpm8.1)
@@ -63,7 +63,7 @@ located php -v
 ```
 And:
 ```
-located apache -v
+lcd apache -v
   Installed: 		Apache/2.4.52
   Running:   		Apache/2.4.52
   Mods available: 	mod_proxy, mod_evasive, ...
@@ -72,35 +72,35 @@ located apache -v
 Firewall management
 
 ```
-located -firewall 		 # shows `iptables -L -n -v` (easy to forget, so shortcut: -firewall)
-located -firewall6 		 # shows `ip6tables -L -n -v` (easy to forget, so shortcut: -firewall6)
+lcd -firewall 		 # shows `iptables -L -n -v` (easy to forget, so shortcut: -firewall)
+lcd -firewall6 		 # shows `ip6tables -L -n -v` (easy to forget, so shortcut: -firewall6)
 
-located -firewall -drop 192.168.1.50       # Block IP
-located -firewall -drop 2001:db8::1        # Auto-detects IPv6
-located -firewall -accept 10.0.0.5         # Whitelist IP to all ports
-located -firewall -accept 10.0.0.5 -p 22   # Whitelist IP to port 22
-located -firewall -remove 192.168.1.50     # undo a rule
+lcd -firewall -drop 192.168.1.50       # Block IP
+lcd -firewall -drop 2001:db8::1        # Auto-detects IPv6
+lcd -firewall -accept 10.0.0.5         # Whitelist IP to all ports
+lcd -firewall -accept 10.0.0.5 -p 22   # Whitelist IP to port 22
+lcd -firewall -remove 192.168.1.50     # undo a rule
 ```
 
 Vhosts management (very difficult to memorize all sites/configs/enabled/available/ssl etc if many vhosts)
 
 ```
-located -vhosts          # Apache/Nginx virtual host configs
-located -sites           # all sites configs
+lcd -vhosts          # Apache/Nginx virtual host configs
+lcd -sites           # all sites configs
 ```
 
 Search on filesize.
 
 ```
-located -size >100M      # files larger than 100M
-located -size <10M       # files smaller than 10M
-located -size 50M-200M   # files between 50M and 200M
+lcd -size >100M      # files larger than 100M
+lcd -size <10M       # files smaller than 10M
+lcd -size 50M-200M   # files between 50M and 200M
 ```
 
 We could combine it with the other modes too:
 
 ```
-located -logs -size +100M     # big log files eating disk space
-located -archive -size +1G    # large archives
-located -all -size +500M      # any large config/system files
+lcd -logs -size +100M     # big log files eating disk space
+lcd -archive -size +1G    # large archives
+lcd -all -size +500M      # any large config/system files
 ```
