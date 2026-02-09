@@ -116,8 +116,8 @@ lcd -unlock				# Removes apt/dpkg locks.
 Firewall management
 
 ```
-lcd -firewall 		 	# shows `iptables -L -n -v` (easy to forget, so shortcut: -firewall)
-lcd -firewall6 		 	# shows `ip6tables -L -n -v` (easy to forget, so shortcut: -firewall6)
+lcd -firewall 		 	# shows `iptables -L -n -v --line-numbers` (easy to forget, so shortcut: -firewall)
+lcd -firewall6 		 	# shows `ip6tables -L -n -v --line-numbers` (easy to forget, so shortcut: -firewall6)
 
 lcd -firewall -drop 192.168.1.50       # Block IP
 lcd -firewall -drop 2001:db8::1        # Auto-detects IPv6
