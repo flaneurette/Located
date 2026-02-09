@@ -3,6 +3,13 @@
   exit 1
 }
 
+is_config_key() {
+  case "$1" in
+    EDITOR|COLORS|LOG_LINES) return 0 ;;
+    *) return 1 ;;
+  esac
+}
+
 # Validate editors
 validate_editor() {
   case "$1" in
@@ -78,10 +85,14 @@ contains_dangerous_cmd() {
 # -----------------------------------------
 
 # Whitelist flags
-is_allowed_flag() {
+is_flag() {
   case "$1" in
-    -logs|-log|-cert|-certs|-service|-services|-v|-start|-stop) return 0 ;;
-    *) return 1 ;;
+    -logs|-log|-cert|-certs|-service|-services|-v|-start|-stop|-restart|-s|-quit|-reboot)
+      return 0
+      ;;
+    *)
+      return 1
+      ;;
   esac
 }
 # -----------------------------------------
