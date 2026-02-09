@@ -11,14 +11,14 @@ modes/
 
 
 ```
-lcd -archive | -archives  	# .tar, .gz, .zip, .bz2, .xz, .7z
-lcd -logs    | -log 		# /var/log/* and other log locations
-lcd -error   | -errors 	    # /var/log/error.log and all other error logs. (also scan all vhosts!)
-lcd -service | -services 	# systemd service files
-lcd -cron    | -crontabs 	# crontabs, /etc/cron.*
-lcd -cert    | -certs  	    # SSL/TLS certificates (.pem, .crt, .key)
-lcd -backup  | -backups	    # .bak, .old, backup dirs
-lcd -journal -n 100 		# quick journalctl wrapper
+lcd -archive 		| -archives  	# .tar, .gz, .zip, .bz2, .xz, .7z
+lcd -logs    		| -log 			# /var/log/* and other log locations
+lcd -error   		| -errors 	    # /var/log/error.log and all other error logs. (also scan all vhosts!)
+lcd -service 		| -services 	# systemd service files
+lcd -cron    		| -crontabs 	# crontabs, /etc/cron.*
+lcd -cert    		| -certs  	    # SSL/TLS certificates (.pem, .crt, .key)
+lcd -backup  		| -backups	    # .bak, .old, backup dirs
+lcd -journal -n 100 | -news			# quick journalctl wrapper
 ```
 
 Each mode could have its own priority list and search paths. Like: *lcd -logs* could prioritize:
