@@ -22,12 +22,14 @@ Configuration edit.
 
 ```
 # Editor
+lcd -config | -conf | -configuration# Aliases
+-------------------------------------------------------------
 lcd -config -editor nano			# Alter lcd config editor
 lcd -config -editor vi				# Ibid
 lcd -config -editor vim				# Ibid
 
 # Colors
-lcd -config -colors green-orange    # Alter lcd config colors
+lcd -config -colors green:orange    # Alter lcd config colors
 ```
 
 Extra's:
