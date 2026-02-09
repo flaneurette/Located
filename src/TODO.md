@@ -57,7 +57,8 @@ lcd -home alice 		# prints all relevant files/scripts found in /home/alice/ (mus
 Complete Linux update, upgrade and auto-clean.
 
 ```
-lcd -update 			# Updates, upgrades and auto-removes stale packages.
+lcd -update 				# Interactive updates
+lcd -update -full 			# Updates, upgrades and auto-removes stale packages.
 ```
 
 Explain.
