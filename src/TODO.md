@@ -36,7 +36,7 @@ Each mode could have its own priority list and search paths. Like: *lcd -logs* c
 Alt dir scanning.
 
 ```
-lcd -dir /boot			# Lists files in /boot
+lcd -dir /boot			# Lists files in /boot (must be root! determine usr privileges first)
 lcd -directory /boot	# ibid
 ```
 
