@@ -3,6 +3,16 @@
   exit 1
 }
 
+# Detect binary files
+is_binary() {
+  file -b --mime "$1" | grep -qv '^text/'
+}
+
+# Usage
+# if is_binary "$target"; then
+#  warn "Binary file detected: $target"
+# fi
+
 is_config_key() {
   case "$1" in
     EDITOR|COLORS|LOG_LINES) return 0 ;;
